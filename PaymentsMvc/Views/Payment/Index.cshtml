@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PaymentsMvc.Models.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a href="@Url.Action("AddPayment","Payment")">Create Payment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.PaymentID">Edit</a> |*@
+                @*<a asp-action="Delete" asp-route-id="@item.PaymentID">Delete</a>*@
+                <a href="@Url.Action("UpdatePayment", "Payment", new { paymentId = item.PaymentID})">Update Payment</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

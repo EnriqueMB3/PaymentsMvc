@@ -1,0 +1,41 @@
+﻿@model PaymentsMvc.Models.Payment
+
+@{
+    ViewData["Title"] = "AddPayment";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>AddPayment</h1>
+
+<h4>Payment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Payment"  method="post" action="AddPaymentAction">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Payment Name</label>
+                <input asp-for="PaymentName" class="form-control"  name="PaymentName" />
+                <span asp-validation-for="PaymentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Amount</label>
+                <input asp-for="Amount" class="form-control" name="Amount" type="number" />
+                <span asp-validation-for="Amount"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Date</label>
+                <input asp-for="Date" class="form-control" type="date" name="Date"/>
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
